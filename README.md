@@ -18,37 +18,6 @@ With version 1.2 I have completely rewritten this component and added some new f
 
 # Installation
 
-## Yii 1.1
-1. Copy `UserCounter.php` from folder **1.1** to `protected/components` or `protected/extensions`.
-2. Open your config, in my case `protected/config/main.php`.
-3. Add the component **userCounter** to the *components*-section, so it's accessable via `Yii::app()->userCounter`.
-```php
-return array(
-    'components' => array(
-        'userCounter' => array(
-            // Use this when you copied the file to components folder
-            'class' => 'application.components.UserCounter',
-
-            // ... or this for extensions folder
-            'class' => 'ext.UserCounter',
-
-            // You can setup these options:
-            'tableUsers' => 'pcounter_users',
-            'tableSave' => 'pcounter_save',
-            'autoInstallTables' => true,
-            'onlineTime' => 10, // min
-        ),
-    ),
-);
-```
-Please ensure that you use the correct class path and have a look at the options for UserCounter: `tableUsers`, `tableSave`, `autoInstallTables` and `onlineTime`. For further information [go to documentation](#documentation).
-4. *(optional)* If you want UserCounter to update the user values automatically, you can add `userCounter` to the `preload`configuration. If you want to update it on your own, you have to call `Yii::app()->userCounter->refresh()`:
-```php
-return array(
-	'preload' => array('log', 'userCounter'),
-);
-```
-
 ## Yii 2.0
 
 1. Copy `UserCounter.php` from folder **2.0** to your app folder, e.g. `/components` (basic template) or `/frontend/components` (with advanced template).
@@ -81,17 +50,6 @@ return [
 # Usage
 
 Here a very simple example how you can use UserCounter. This example shows you how you access every value provided by this component.
-
-## Yii 1.1
-
-```html
-online: <?php echo Yii::app()->userCounter->getOnline(); ?><br />
-today: <?php echo Yii::app()->userCounter->getToday(); ?><br />
-yesterday: <?php echo Yii::app()->userCounter->getYesterday(); ?><br />
-total: <?php echo Yii::app()->userCounter->getTotal(); ?><br />
-maximum: <?php echo Yii::app()->userCounter->getMaximal(); ?><br />
-date for maximum: <?php echo date('d.m.Y', Yii::app()->userCounter->getMaximalTime()); ?>
-```
 
 ## Yii 2.0
 
